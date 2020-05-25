@@ -60,10 +60,10 @@ var UIcontroller = (function () {
     };
 })();
 
-var connectorController = (function (budgetCtrl, UIctrl) {
+var GlobalController = (function (budgetCtrl, UIctrl) {
     document.getElementById("currentMonth").textContent = "Available balance in " + budgetCtrl.publicgetcurrentmonth();
     var mainFunction = function () {
-        console.log('inpt value click');
+        console.log(UIctrl.getInputValues());
         //1. get input values
 
         //2. Calculate the budget
