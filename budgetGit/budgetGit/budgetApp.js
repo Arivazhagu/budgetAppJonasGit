@@ -52,16 +52,32 @@ var budgetController = (function () {
 
 var UIcontroller = (function () {
     //UI controller Code goes here
+    var domElementIds = {
+        description: "descEntered",
+        amount: "amountEntered",
+        enterButton:"enterValue"
+    };
 
     return {
         getInputValues: function () {
-            return "1";
-        }
+            return {
+                typeOfIncome: (function () {
+                    var selectedOption = document.getElementsByTagName("select")[0].selectedIndex;
+                    if (selectedOption === 1) {
+                        return "exp";
+                    } else {
+                        return "Inc";
+                    }
+                })(),                    
+                description: document.getElementById(domElementIds.description).value,
+                amount: document.getElementById(domElementIds.amount).value
+            };
+        },
+        domElements : domElementIds
     };
 })();
 
-var GlobalController = (function (budgetCtrl, UIctrl) {
-    document.getElementById("currentMonth").textContent = "Available balance in " + budgetCtrl.publicgetcurrentmonth();
+var GlobalController = (function (budgetCtrl, UIctrl) {            
     var mainFunction = function () {
         console.log(UIctrl.getInputValues());
         //1. get input values
@@ -74,13 +90,23 @@ var GlobalController = (function (budgetCtrl, UIctrl) {
 
         //5. Update UI- overall values
     }
-    document.getElementById('enterValue').addEventListener('click', mainFunction);
-    window.addEventListener("keypress", function (event) {
-        if (event.keyCode === 13 || event.which === 13) {
-            mainFunction();
-        }
-    });
+
+    function init() {
+        document.getElementById("currentMonth").textContent = "Available balance in " + budgetCtrl.publicgetcurrentmonth();
+        var dom = UIctrl.domElements;
+        document.getElementById(dom.enterButton).addEventListener('click', mainFunction);
+        window.addEventListener("keypress", function (event) {
+            if (event.keyCode === 13 || event.which === 13) {
+                mainFunction();
+            }
+        });
+    };    
+
+    return {
+        initFunction: init
+    };
 
 })(budgetController, UIcontroller);
-//fromgit
-//dev branch
+
+GlobalController.initFunction();
+
