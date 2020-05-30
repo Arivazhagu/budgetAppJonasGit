@@ -16,7 +16,7 @@
             <div class="col-12 bg-info h-50 topElements">
                 <div class="row w-50 mx-auto h-75 rounded gradientStyle">
                     <div class=" col-12">
-                        <label class="w-100 text-center" id="currentMonth" style="font-variant:small-caps"></label>
+                        <label class="w-100 text-center" id="currentMonth" style="font-variant: small-caps"></label>
                     </div>
                     <div class="col-12">
                         <label class="w-100 text-center costLabel" id="globalBalance">+ 0.00</label>
@@ -79,10 +79,21 @@
                 <div class="container mt-5 w-50 mx-auto">
                     <div class="row">
                         <div class="col-6">
-                            <div id="incomeList" class="addedElement">INCOME</div>                            
+                            <div id="Inc">   
+                            <div  class="addedElement">INCOME</div>
+                            <%--<div id="incomeList--1" class="addedElement">
+                                <div class="row">
+                                    <div class="col-2">ID</div>
+                                    <div class="col-8 overflow-hidden">DescriptionDescriptionDescriptionDescription</div>
+                                    <div class="col-2">Amount</div>
+                                </div>
+                            </div>--%>
                         </div>
+                            </div>
                         <div class="col-6">
-                           <div id="expenseList" class="addedElement">EXPENSES</div>
+                            <div id="exp">
+                            <div class="addedElement">EXPENSES</div>
+                                </div>
                         </div>
                     </div>
                 </div>

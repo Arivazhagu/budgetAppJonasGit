@@ -45,13 +45,15 @@ var budgetController = (function () {
     }
 
     //any function attached to the prototype of construcot will be inherited, without making a fresh copy on "new" object
-    var income = function (type, desc, amount) {
+    var income = function (id, type, desc, amount) {
+        this.id = id;
         this.type = type;
         this.description = desc;
-        this.amount = amount;            
+        this.amount = amount;
     }
 
-    var expense = function (type, desc, amount) {
+    var expense = function (id, type, desc, amount) {
+        this.id = id;
         this.type = type;
         this.description = desc;
         this.amount = amount;
@@ -60,22 +62,24 @@ var budgetController = (function () {
     var allDetails = {
         allItems: {
             Inc: [],
-            exp:[]
+            exp: []
         },
         totals: {
             income: 0,
-            expense:0
+            expense: 0
         }
     }
 
     return {
         publicgetcurrentmonth: getCurrentMonth,
         addNewItem: function (inputObj) {
+            var id = allDetails.allItems[inputObj.typeOfIncome].length + 1;
             if (inputObj.typeOfIncome === "exp") {
-                newItem = new expense(inputObj["typeOfIncome"], inputObj["description"], inputObj["amount"])
+                newItem = new expense(id, inputObj["typeOfIncome"], inputObj["description"], inputObj["amount"])
             } else if (inputObj.typeOfIncome === "Inc") {
-                newItem = new income(inputObj["typeOfIncome"], inputObj["description"], inputObj["amount"])
+                newItem = new income(id, inputObj["typeOfIncome"], inputObj["description"], inputObj["amount"])
             }
+            allDetails.allItems[inputObj.typeOfIncome].push(newItem);
             return newItem;
         },
         allData: allDetails
@@ -88,8 +92,22 @@ var UIcontroller = (function () {
     var domElementIds = {
         description: "descEntered",
         amount: "amountEntered",
-        enterButton:"enterValue"
+        enterButton: "enterValue"
     };
+
+    function updateNewItemInUI(id, type, desc, Amount) {
+        var html;
+        html = '<div id="%type%--%id%" class="addedElement">'+
+                    '<div class="row">'+
+                        '<div class="col-2">%id%</div>'+
+                        '<div class="col-8 overflow-hidden">%desc%</div>'+
+                        '<div class="col-2" > %Amount%</div >'+
+                    '</div >'+
+                 '</div > ';
+        html = (((((html.replace("%id%", id)).replace("%desc%", desc)).replace("%Amount%", Amount)).replace("%id%",id)).replace("%type%",type));
+        console.log(html);
+        document.getElementById(type).insertAdjacentHTML("beforeend", html);
+    }
 
     return {
         getInputValues: function () {
@@ -101,27 +119,27 @@ var UIcontroller = (function () {
                     } else {
                         return "Inc";
                     }
-                })(),                    
+                })(),
                 description: document.getElementById(domElementIds.description).value,
                 amount: document.getElementById(domElementIds.amount).value
             };
         },
-        domElements : domElementIds
+        domElements: domElementIds,
+        updateNewItem: updateNewItemInUI
     };
 })();
 
-var GlobalController = (function (budgetCtrl, UIctrl) {            
+var GlobalController = (function (budgetCtrl, UIctrl) {
     var mainFunction = function () {
         var newItem;
         //1. get input values
-        var inputObj = UIctrl.getInputValues();        
+        var inputObj = UIctrl.getInputValues();
 
         //2. Calculate the budget
         newItem = budgetCtrl.addNewItem(inputObj);
-       
-        console.log(newItem);
-        //3. update the budget
 
+        //3. update the budget
+        UIctrl.updateNewItem(newItem.id, newItem.type, newItem.description, newItem.amount);
         //4. update the UI- Create elements
 
         //5. Update UI- overall values
@@ -136,7 +154,7 @@ var GlobalController = (function (budgetCtrl, UIctrl) {
                 mainFunction();
             }
         });
-    };    
+    };
 
     return {
         initFunction: init
