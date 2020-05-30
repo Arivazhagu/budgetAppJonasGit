@@ -44,8 +44,41 @@ var budgetController = (function () {
         }
     }
 
+    //any function attached to the prototype of construcot will be inherited, without making a fresh copy on "new" object
+    var income = function (type, desc, amount) {
+        this.type = type;
+        this.description = desc;
+        this.amount = amount;            
+    }
+
+    var expense = function (type, desc, amount) {
+        this.type = type;
+        this.description = desc;
+        this.amount = amount;
+    }
+
+    var allDetails = {
+        allItems: {
+            Inc: [],
+            exp:[]
+        },
+        totals: {
+            income: 0,
+            expense:0
+        }
+    }
+
     return {
-        publicgetcurrentmonth: getCurrentMonth
+        publicgetcurrentmonth: getCurrentMonth,
+        addNewItem: function (inputObj) {
+            if (inputObj.typeOfIncome === "exp") {
+                newItem = new expense(inputObj["typeOfIncome"], inputObj["description"], inputObj["amount"])
+            } else if (inputObj.typeOfIncome === "Inc") {
+                newItem = new income(inputObj["typeOfIncome"], inputObj["description"], inputObj["amount"])
+            }
+            return newItem;
+        },
+        allData: allDetails
     }
 
 }());
@@ -79,11 +112,14 @@ var UIcontroller = (function () {
 
 var GlobalController = (function (budgetCtrl, UIctrl) {            
     var mainFunction = function () {
-        console.log(UIctrl.getInputValues());
+        var newItem;
         //1. get input values
+        var inputObj = UIctrl.getInputValues();        
 
         //2. Calculate the budget
-
+        newItem = budgetCtrl.addNewItem(inputObj);
+       
+        console.log(newItem);
         //3. update the budget
 
         //4. update the UI- Create elements
