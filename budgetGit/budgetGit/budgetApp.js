@@ -101,7 +101,7 @@ var UIcontroller = (function () {
                     '<div class="row">'+
                         '<div class="col-2">%id%</div>'+
                         '<div class="col-8 overflow-hidden">%desc%</div>'+
-                        '<div class="col-2" > %Amount%</div >'+
+                        '<div class="col-2 overflow-auto" > %Amount%</div >'+
                     '</div >'+
                  '</div > ';
         html = (((((html.replace("%id%", id)).replace("%desc%", desc)).replace("%Amount%", Amount)).replace("%id%",id)).replace("%type%",type));
@@ -121,11 +121,19 @@ var UIcontroller = (function () {
                     }
                 })(),
                 description: document.getElementById(domElementIds.description).value,
-                amount: document.getElementById(domElementIds.amount).value
+                amount: parseFloat(document.getElementById(domElementIds.amount).value)
             };
         },
         domElements: domElementIds,
-        updateNewItem: updateNewItemInUI
+        updateNewItem: updateNewItemInUI,
+        clearFields: function () {
+            var fieldsToClear;
+            fieldsToClear = document.querySelectorAll("#"+domElementIds.description+ ",#"+domElementIds.amount);
+            fieldsToClear.forEach(function (currentValue, currentIndex, fullList) {                
+                currentValue.value = "";
+            });    
+            fieldsToClear[0].focus();
+        }
     };
 })();
 
@@ -135,14 +143,27 @@ var GlobalController = (function (budgetCtrl, UIctrl) {
         //1. get input values
         var inputObj = UIctrl.getInputValues();
 
-        //2. Calculate the budget
-        newItem = budgetCtrl.addNewItem(inputObj);
+        if (inputObj.description !== "" && inputObj.amount !== 0 && !isNaN(inputObj.amount)) {
+            //2. Calculate the budget
+            newItem = budgetCtrl.addNewItem(inputObj);
 
-        //3. update the budget
-        UIctrl.updateNewItem(newItem.id, newItem.type, newItem.description, newItem.amount);
-        //4. update the UI- Create elements
+            //3. update the budget
+            UIctrl.updateNewItem(newItem.id, newItem.type, newItem.description, newItem.amount);
 
-        //5. Update UI- overall values
+            //4. Clear input fields
+            UIctrl.clearFields();
+
+            //5. CalculateTotalsAndPercentage
+                    //-Function should return only one value
+                    //- Go to respeective modules and update the global variable- 1 function
+                    //- Go to the global variable fetch the values - 2nd function
+                    //- Multiple values can be return using object
+
+            //6. update the UI- Create elements
+
+            //6. Update UI- overall values
+
+        }       
     }
 
     function init() {
