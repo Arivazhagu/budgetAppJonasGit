@@ -153,7 +153,13 @@ var GlobalController = (function (budgetCtrl, UIctrl) {
             //4. Clear input fields
             UIctrl.clearFields();
 
-            //5. update the UI- Create elements
+            //5. CalculateTotalsAndPercentage
+                    //-Function should return only one value
+                    //- Go to respeective modules and update the global variable- 1 function
+                    //- Go to the global variable fetch the values - 2nd function
+                    //- Multiple values can be return using object
+
+            //6. update the UI- Create elements
 
             //6. Update UI- overall values
 
