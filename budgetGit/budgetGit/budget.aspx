@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="budget.aspx.cs" Inherits="budgetGit.budget" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="budget.aspx.cs" Inherits="budgetGit.budget" MaintainScrollPositionOnPostback="true" %>
 
 <!DOCTYPE html>
 
@@ -27,9 +27,9 @@
                             <div class="w-50 text-white rounded inputHeights d-flex align-items-center" id="income">
                                 <div class="row w-100 d-flex align-items-center">
                                     <div class="col-5">INCOME</div>
-                                    <div class="col-4 border rounded d-flex align-items-center">
-                                        <span class="font-weight-bold">+</span>
-                                        <label id="totalIncome" class="m-0">0</label>
+                                    <div class="col-4 p-0 text-center border rounded d-flex align-items-center justify-content-center">
+                                        <span class="font-weight-bold"></span>
+                                        <label id="totalIncome" class="m-0 incomeLabel">0</label>
                                     </div>
                                     <div class="col-2"></div>
                                 </div>
@@ -41,12 +41,12 @@
                             <div class="w-50 text-white rounded inputHeights  d-flex align-items-center spendings" id="">
                                 <div class="row w-100 d-flex align-items-center">
                                     <div class="col-5">EXPENSES</div>
-                                    <div class="col-4 border rounded d-flex align-items-center">
-                                        <span class="font-weight-bold mr-1">-</span>
-                                        <label id="totalExpenses" class="m-0">0</label>
+                                    <div class="col-4 p-0 text-center border rounded d-flex align-items-center justify-content-center">
+                                        <span class="font-weight-bold mr-1"></span>
+                                        <label id="totalExpenses" class="m-0 expenseLabel">0</label>
                                     </div>
                                     <div class="col-3">
-                                        <label id="expensePercent" class="border rounded mb-0 px-2" style="">
+                                        <label id="expensePercent" class="border rounded mb-0 px-2 percentLabel" style="">
                                             0.0%
                                         </label>
                                     </div>
@@ -57,7 +57,7 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-2">
-                                <select class="form-control font-weight-bold">
+                                <select class="form-control font-weight-bold" id="typeSelecter">
                                     <option value="value">+</option>
                                     <option value="value">-</option>
                                 </select>
@@ -76,23 +76,31 @@
             </div>
 
             <div class="col-12 bg-white h-50">
-                <div class="container mt-5 w-50 mx-auto">
-                    <div class="row">
+                <div class="mt-5 w-50 mx-auto">
+                    <div class="row deleteAccessor">
                         <div class="col-6">
                             <div id="Inc">   
-                            <div  class="addedElement">INCOME</div>
-                            <%--<div id="incomeList--1" class="addedElement">
-                                <div class="row">
-                                    <div class="col-2">ID</div>
-                                    <div class="col-8 overflow-hidden">DescriptionDescriptionDescriptionDescription</div>
+                            <div  class="addedElement text-success">INCOME</div>
+                           <%-- <div id="incomeList--1" class="addedElement changeVisibility">
+                                <div class="row">                                    
+                                    <div class="col-6 overflow-hidden">DescriptionDescription</div>
                                     <div class="col-2">Amount</div>
+                                    <div class="col-2 "><i class="fa fa-trash-o deleteIcon"></i></div>
                                 </div>
                             </div>--%>
                         </div>
                             </div>
                         <div class="col-6">
                             <div id="exp">
-                            <div class="addedElement">EXPENSES</div>
+                            <div class="addedElement text-danger">EXPENSES</div>
+                               <%-- <div id="exp--1" class="addedElement changeVisibility">
+                                <div class="row">                                    
+                                    <div class="col-6 overflow-hidden">DescriptionDescription</div>
+                                    <div class="col-2">Amount</div>
+                                    <div class="col-2"><label class="border border-danger rounded"> 2%</label></div>
+                                    <div class="col-2 "><i class="fa fa-trash-o deleteIcon"></i></div>
+                                </div>
+                            </div>--%>
                                 </div>
                         </div>
                     </div>

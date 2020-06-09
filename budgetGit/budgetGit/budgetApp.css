@@ -72,3 +72,21 @@ li {
     border-bottom: 1px solid grey;
     padding-bottom: 8px;
 }
+.deleteIcon {
+    opacity:0;
+    cursor:pointer;
+}
+.deleteAccessor{
+    /*margin-top:4px;*/
+}
+.changeToRed{
+    border: 0.5px solid red;
+}
+    .changeToRed:focus {
+        border: 0.5px solid red !important;
+        box-shadow:none;
+    }
+.red {
+    border: 0.5px solid red !important;
+}
+   
