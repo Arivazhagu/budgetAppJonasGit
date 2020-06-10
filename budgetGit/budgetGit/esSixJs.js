@@ -5,4 +5,6 @@
 
 // let and const are block scoped
 
-//same name can be used inside and outside loop, inside the loop it is initiated with let key word. Both variables will become different
+//test it
+
+//same name name1 can be used inside and outside loop, inside the loop it is initiated with let key word. Both variables will become different
