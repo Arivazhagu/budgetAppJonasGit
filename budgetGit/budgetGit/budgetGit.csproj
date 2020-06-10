@@ -80,6 +80,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="esSixJs.js" />
+    <Content Include="esSixStarter.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="photo-1576035403005-570aecfae8e3.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -205,6 +207,13 @@
     </Compile>
     <Compile Include="budget.aspx.designer.cs">
       <DependentUpon>budget.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="esSixStarter.aspx.cs">
+      <DependentUpon>esSixStarter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="esSixStarter.aspx.designer.cs">
+      <DependentUpon>esSixStarter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
