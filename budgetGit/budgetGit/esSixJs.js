@@ -110,7 +110,7 @@ let calcVal = (name, dob) => {
 };
 
 console.log(calcVal("Arivu", 1992));
-*/
+
 
 //lexical scoping- function defined iside the object has access to the object using this key word
 //A function defined inside a object, can call a new function which does not have access to the object using 'this' key word
@@ -124,3 +124,58 @@ console.log(calcVal("Arivu", 1992));
 //When a regular function called inside a "function of an object" do not have access to "this", use arrow function inside which has access to this.
 //but when both inner and outer function changed to arrow function, then the issue will come again.
 
+var greenObject5 = {
+    color: "Green",
+    width: "30%",
+    ES6: "Arrow function",
+    Parameters: "In-Parantehsis",
+    addEventListener: function () {
+        let self = this;
+        document.querySelector(".green").addEventListener("click", function () {
+            alert('i\'m ' + self.color);
+        })
+    }
+}
+
+//greenObject.addEventListener();
+
+var greenObject6 = {
+    color: "Green",
+    width: "30%",
+    ES6: "Arrow function",
+    Parameters: "In-Parantehsis",
+    addEventListener: function () {        
+        document.querySelector(".green").addEventListener("click", () => alert(`i\'m  ${this.color}`));
+    }
+}
+
+//greenObject6.addEventListener();
+
+var greenObject6 = {
+    color: "Green",
+    width: "30%",
+    ES6: "Arrow function",
+    Parameters: "In-Parantehsis",
+    addEventListener: function (friends) {
+        var friendArr = friends.map(function (current) {
+           return `${current} is friend with ${this.color}`
+        }.bind(this))
+        return friendArr;
+    }
+}
+//console.log(greenObject6.addEventListener(["Arivu", "Akshaya"]));
+
+var greenObject66 = {
+    color: "Green",
+    width: "30%",
+    ES6: "Arrow function",
+    Parameters: "In-Parantehsis",
+    addEventListener: function (friends) {
+        var friendArr = friends.map((current) => {
+            return `${current} is friend with ${this.color}`
+        })
+        return friendArr;
+    }
+}
+console.log(greenObject66.addEventListener(["Arivu", "Akshaya"]));
+*/
