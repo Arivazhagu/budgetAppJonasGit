@@ -5,3 +5,8 @@
     font-size:20px;
     font-weight: bold;
 }
+
+.opt:hover{
+    background-color:burlywood;
+    cursor:pointer;
+}

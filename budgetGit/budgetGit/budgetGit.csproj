@@ -189,6 +189,9 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="villageAdmin.aspx" />
+    <Content Include="villageAdmin.css" />
+    <Content Include="villageAdmin.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -217,6 +220,13 @@
       <DependentUpon>esSixStarter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="villageAdmin.aspx.cs">
+      <DependentUpon>villageAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="villageAdmin.aspx.designer.cs">
+      <DependentUpon>villageAdmin.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

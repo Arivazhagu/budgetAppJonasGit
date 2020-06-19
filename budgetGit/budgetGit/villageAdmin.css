@@ -1,0 +1,18 @@
+﻿body {
+    color: #165695;
+}
+.btnDelete{
+    width:30%;
+}
+input[type=button]:hover {
+    background-color: #acacf4 !important;
+}
+
+input[type=text]{
+    border: 0.5px solid #17a2b8 !important;
+    border-radius:3px;
+}
+
+/*#addPark:hover {
+    background-color: #acacf4 !important;
+}*/
