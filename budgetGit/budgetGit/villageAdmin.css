@@ -16,3 +16,7 @@ input[type=text]{
 /*#addPark:hover {
     background-color: #acacf4 !important;
 }*/
+
+#demoModal{
+    display:none;
+}

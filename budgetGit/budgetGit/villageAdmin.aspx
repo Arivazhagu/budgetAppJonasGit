@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="villageAdmin.aspx.cs" Inherits="budgetGit.villageAdmin" %>
 
+<%@ Register Src="~/modal.ascx" TagPrefix="uc1" TagName="modal" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,19 +20,19 @@
             <div class="row">
                 <div class="col-3">
                     Name:
-                    <input type="text" placeholder="Name" />
+                    <input type="text" placeholder="Name" class ="name"/>
                 </div>
                 <div class="col-3">
                     Year:
-                    <input type="text" placeholder="Start year" />
+                    <input type="text" placeholder="Start year" class ="startYear"/>
                 </div>
                 <div class="col-3">
                     No.Trees:
-                    <input type="text" placeholder="number of trees" />
+                    <input type="text" placeholder="number of trees" class ="numberOfTree"/>
                 </div>
                 <div class="col-3">
                     Area:
-                    <input type="text" placeholder="Area in skm" />
+                    <input type="text" placeholder="Area in skm" class ="Area"/>
                 </div>
             </div>
             <div class="d-flex justify-content-around">
@@ -55,8 +58,10 @@
                 </div>
             </div>
             <div class="col-6 border"></div>
-        </div>
-    </form>
+        </div>      
+        <uc1:modal runat="server" id="modal" />
+    </form>    
+
     <script src="villageAdmin.js"></script>
     <script src="Scripts/jquery-3.0.0.js"></script>
     <script src="Scripts/popper.js"></script>
