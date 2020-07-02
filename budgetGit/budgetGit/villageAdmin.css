@@ -13,10 +13,27 @@ input[type=text]{
     border-radius:3px;
 }
 
-/*#addPark:hover {
-    background-color: #acacf4 !important;
-}*/
-
 #demoModal{
     display:none;
+}
+
+.area{
+    margin-left:28px;
+}
+.year{
+    margin-left:32px;
+}
+.name{
+    margin-left:19px;
+}
+.length {
+    margin-left: 13px;
+}
+.header {
+    text-decoration: underline;
+}
+
+h1{
+    margin: 0 !important;
+    padding:0;
 }
