@@ -29,13 +29,18 @@ var globalCtrl = (function (uiCtrl, adminCtrl) {
         })   
         document.querySelector("#addStreet").addEventListener("click", () => {
             let streetDetails = uiCtrl.getStreetDetails();
-            if (adminCtrl.streetDetails() >= 4) {
+            let countOfStreet = adminCtrl.streetDetails();
+            if (countOfStreet >= 4) {
                 console.log("Only 4 parks are present");
                 uiCtrl.callmodal("Only 4 parks are available in the current town!");
                 return;
             } else if ((streetDetails.streetLength !== "") && (streetDetails.streetname !== "") && (streetDetails.streetYear !== "")) {
                 let newStreet = adminCtrl.addNewStreet(streetDetails);
                 uiCtrl.addNewStreet(newStreet);
+                let average = adminCtrl.avgOfStreets();
+                let classi = adminCtrl.StreetClassification();
+                uiCtrl.addAvgOfStreet(average, countOfStreet + 1);
+                uiCtrl.addClassificaionsOfStreet(classi);
             } else {
                 uiCtrl.callmodal("Street Details - All fields are mandatory");
             }                       

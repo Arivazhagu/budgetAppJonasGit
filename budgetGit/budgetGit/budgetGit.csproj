@@ -194,6 +194,8 @@
     <Content Include="villageAdmin.css" />
     <Content Include="villageAdmin.js" />
     <Content Include="villageAdminAdminCtrl.js" />
+    <Content Include="villageAdminJonas.aspx" />
+    <Content Include="villageAdminJonas.js" />
     <Content Include="villageAdminUIctrl.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -236,6 +238,13 @@
     </Compile>
     <Compile Include="villageAdmin.aspx.designer.cs">
       <DependentUpon>villageAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="villageAdminJonas.aspx.cs">
+      <DependentUpon>villageAdminJonas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="villageAdminJonas.aspx.designer.cs">
+      <DependentUpon>villageAdminJonas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

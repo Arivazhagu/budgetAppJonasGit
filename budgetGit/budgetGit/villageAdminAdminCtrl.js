@@ -73,6 +73,20 @@
         },
         streetDetails: () => {
             return (consolidatedData.streetDetails.length);
+        },
+        avgOfStreets: () => {
+            let avg=0;
+            for (const element of consolidatedData.streetDetails) {
+                avg += parseInt(element.streetLength);
+            }
+            return [(avg / (consolidatedData.streetDetails.length)),avg];
+        },
+        StreetClassification: () => {
+            let classi = "";
+            for (const element of consolidatedData.streetDetails) {
+               classi+= `${element.streetName}, has the total length of ${element.streetLength}. This street is ${element.streetSize}.</br> `
+            }
+            return classi;
         }
     }
 })();

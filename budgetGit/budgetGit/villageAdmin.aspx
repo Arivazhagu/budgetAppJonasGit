@@ -107,16 +107,18 @@
             <div class="col-6 border  text-center">
                 <div class="row">
                     <div class="col-12">
+                        <p class="border mt-5">Park details</p>
                         <div class="report"></div>
                         <div class="thousand"></div>
                         <div class="age"></div>
                     </div>
+                    <hr />
                     <div class="col-12">
+                        <p class="border mt-5">Street Details</p>
                          <div class="streetAverage"></div>
                         <div class="streetSizeClassi"></div>                        
                     </div>
                 </div>
-
             </div>
         </div>
 

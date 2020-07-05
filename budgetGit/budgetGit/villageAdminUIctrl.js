@@ -14,7 +14,9 @@
         streetName: "#streetName",
         streetYear: "#streetYear",
         streetLength: "#streetLength",
-        identifierToAddStreet:".streetIdentifier"
+        identifierToAddStreet: ".streetIdentifier",
+        streetAverage: ".streetAverage",
+        streetSizeClassi: ".streetSizeClassi"
     }
 
     let domValues = () => {
@@ -111,7 +113,17 @@
         },
         getStreetDetails: streetDetails,
         ageEl: addAgeElement,
-        addNewStreet: addNewStreet
+        addNewStreet: addNewStreet,
+        addAvgOfStreet: (avg, count) => {
+            let elStreet = document.querySelector(domString.streetAverage);
+            elStreet.textContent = "";
+            elStreet.insertAdjacentHTML("beforeend", `<div>Total of ${count} streets are present. ${avg[0]} is the average age of all Streets. Total length is ${avg[1]} </div>`);
+        },
+        addClassificaionsOfStreet: (streetsArr) => {
+            let elStreet = document.querySelector(domString.streetSizeClassi);
+            elStreet.textContent = "";
+            elStreet.insertAdjacentHTML("beforeend", `<div>${streetsArr}</div>`);
+        }
     }
     //7. create UI for new report
 })();
