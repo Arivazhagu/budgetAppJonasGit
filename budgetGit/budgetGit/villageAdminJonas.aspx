@@ -9,7 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <h2>Click F12 to see console</h2>
         </div>
     </form>
+    <script src="villageAdminJonas.js"></script>
 </body>
 </html>

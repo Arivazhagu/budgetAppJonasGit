@@ -69,6 +69,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="async.aspx" />
+    <Content Include="asyncJS.js" />
     <Content Include="budget.aspx" />
     <Content Include="budgetApp.css" />
     <Content Include="budgetApp.js" />
@@ -210,6 +212,13 @@
     <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="async.aspx.cs">
+      <DependentUpon>async.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="async.aspx.designer.cs">
+      <DependentUpon>async.aspx</DependentUpon>
+    </Compile>
     <Compile Include="budget.aspx.cs">
       <DependentUpon>budget.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
